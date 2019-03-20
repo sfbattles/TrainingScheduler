@@ -1,0 +1,74 @@
+{
+  "@ng-bootstrap/ng-bootstrap": {
+    "current": "1.0.4",
+    "wanted": "1.1.2",
+    "latest": "4.0.2",
+    "location": "node_modules\\@ng-bootstrap\\ng-bootstrap"
+  },
+  "@types/jasminewd2": {
+    "current": "2.0.5",
+    "wanted": "2.0.6",
+    "latest": "2.0.6",
+    "location": "node_modules\\@types\\jasminewd2"
+  },
+  "bootstrap": {
+    "current": "3.3.7",
+    "wanted": "3.4.0",
+    "latest": "4.2.1",
+    "location": "node_modules\\bootstrap"
+  },
+  "core-js": {
+    "current": "2.5.7",
+    "wanted": "2.6.3",
+    "latest": "2.6.3",
+    "location": "node_modules\\core-js"
+  },
+  "karma-coverage-istanbul-reporter": {
+    "current": "1.4.3",
+    "wanted": "1.4.3",
+    "latest": "2.0.4",
+    "location": "node_modules\\karma-coverage-istanbul-reporter"
+  },
+  "mysql2": {
+    "current": "1.5.1",
+    "wanted": "1.6.4",
+    "latest": "1.6.4",
+    "location": "node_modules\\mysql2"
+  },
+  "passport-jwt": {
+    "current": "3.0.0",
+    "wanted": "3.0.1",
+    "latest": "4.0.0",
+    "location": "node_modules\\passport-jwt"
+  },
+  "sequelize": {
+    "current": "4.31.2",
+    "wanted": "4.42.0",
+    "latest": "4.42.0",
+    "location": "node_modules\\sequelize"
+  },
+  "ts-node": {
+    "current": "4.1.0",
+    "wanted": "4.1.0",
+    "latest": "8.0.2",
+    "location": "node_modules\\ts-node"
+  },
+  "typescript": {
+    "current": "3.2.4",
+    "wanted": "3.3.1",
+    "latest": "3.3.1",
+    "location": "node_modules\\typescript"
+  },
+  "validator": {
+    "current": "9.2.0",
+    "wanted": "9.4.1",
+    "latest": "10.11.0",
+    "location": "node_modules\\validator"
+  },
+  "zone.js": {
+    "current": "0.8.26",
+    "wanted": "0.8.29",
+    "latest": "0.8.29",
+    "location": "node_modules\\zone.js"
+  }
+}
