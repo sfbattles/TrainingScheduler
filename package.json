@@ -12,7 +12,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "7.2.3",
+    "@angular/animations": "^7.2.3",
     "@angular/common": "7.2.3",
     "@angular/compiler": "7.2.3",
     "@angular/core": "7.2.3",
@@ -29,6 +29,8 @@
     "core-js": "2.4.1",
     "express": "4.16.4",
     "mysql2": "1.6.4",
+    "ng6-toastr-notifications": "^1.0.4",
+    "ngx-toastr": "^10.0.2",
     "parse-error": "0.2.0",
     "passport": "0.4.0",
     "passport-jwt": "4.0.0",

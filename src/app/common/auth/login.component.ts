@@ -9,6 +9,7 @@ export class LoginComponent implements OnInit {
 
     email = '';
     password = '';
+    firstname = '';
 
     constructor(
         private router: Router,
@@ -32,5 +33,9 @@ export class LoginComponent implements OnInit {
                 }
             );
     }
+    signup() : void {
+        this.email = '';
+        this.firstname = '';
+      }
 
 }

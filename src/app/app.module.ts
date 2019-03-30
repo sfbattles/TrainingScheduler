@@ -13,16 +13,23 @@ import { AuthService } from './common/auth/auth.service';
 import { AuthGuard } from './common/auth/auth.guard';
 import { LoginComponent } from './common/auth/login.component';
 import { TokenInterceptor } from './common/auth/token.interceptor';
+import { SignUpComponent } from './signup/signup.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 500,
+      positionClass: 'toast-top-right',
+    }), // ToastrModule added
     FormsModule,
     HttpClientModule,
     NgbModule,
