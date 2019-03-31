@@ -20,8 +20,8 @@ export class SignUpComponent {
       const { firstName, lastName, emailAddress, password } = newUser;
       this.toastr.success(`Sucessfully Added Email Address ${emailAddress}`);
      }
-     showError() {
-       this.toastr.error('All value not entered');
+     showError(errorMessage) {
+       this.toastr.error(errorMessage);
      } 
 
   signup() : void  {
@@ -37,7 +37,7 @@ export class SignUpComponent {
       this.showSuccess(newUser);
        console.log(newUser);
     } else {
-      this.showError();
+      this.showError('Please complete all field');
       console.log("Please complete all field");
     }
   }
