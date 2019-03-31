@@ -26,10 +26,15 @@ import { ToastrModule } from 'ngx-toastr';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot({
-      timeOut: 500,
+    ToastrModule.forRoot(
+ {
+      timeOut: 4000,
+      closeButton: false,
+      easing: 'ease-in',
+      easeTime: 500,
       positionClass: 'toast-top-right',
-    }), // ToastrModule added
+    }
+    ), // ToastrModule added
     FormsModule,
     HttpClientModule,
     NgbModule,

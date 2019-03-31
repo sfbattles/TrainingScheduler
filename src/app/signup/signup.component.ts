@@ -16,9 +16,13 @@ export class SignUpComponent {
   password = '';
 
   constructor(private toastr: ToastrService) {}
-     showSuccess() {
-      this.toastr.success('Completed Sucessfully');
-    }
+     showSuccess(newUser) {
+      const { firstName, lastName, emailAddress, password } = newUser;
+      this.toastr.success(`Sucessfully Added Email Address ${emailAddress}`);
+     }
+     showError() {
+       this.toastr.error('All value not entered');
+     } 
 
   signup() : void  {
     const newUser = {
@@ -30,8 +34,10 @@ export class SignUpComponent {
     const { firstName, lastName, emailAddress, password } = newUser;
 
     if (firstName && lastName && emailAddress && password) {   
+      this.showSuccess(newUser);
        console.log(newUser);
     } else {
+      this.showError();
       console.log("Please complete all field");
     }
   }
