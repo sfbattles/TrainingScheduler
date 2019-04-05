@@ -14,7 +14,7 @@ TE = function (errMessage, log) {
   throw new Error(errMessage);
 };
 
-ReE = function (res, err, code) {
+ReE = function (res, err, code) {   //return error
   if (typeof err == 'object' && typeof err.message != 'undefined') {
     err = err.message;
   }
@@ -22,7 +22,7 @@ ReE = function (res, err, code) {
   return res.json({ success: false, error: err });
 };
 
-ReS = function (res, data, code) {
+ReS = function (res, data, code) {  //return sucessfull
   let sendData = { success: true };
 
   if (typeof data == 'object') {

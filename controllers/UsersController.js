@@ -14,7 +14,6 @@ const create = async function (req, res) {
 
     [err, user] = await to(createUser(body));
     if (err) return ReE(res, err, 422);
-
     return ReS(res, user, 201);
   }
 }
@@ -68,7 +67,6 @@ const authUser = async function (userInfo) {//returns token
   if (err) TE(err.message);
 
   return user;
-
 }
 module.exports.authUser = authUser;
 
@@ -76,8 +74,8 @@ const update = async function (req, res) {
   let err, user, data;
   user = req.user;
   data = req.body;
-  user.set(data);
-  [err, user] = await to(user.save());
+  user.set(data);  //sequelize set command 
+  [err, user] = await to(user.save());     //sequelize save() 
   if (err) {
     if (typeof err == 'object' && typeof err.message != 'undefined') {
       err = err.message;

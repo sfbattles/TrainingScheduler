@@ -33,10 +33,10 @@ module.exports = (sequelize, DataTypes) => {
       classMethods: {
         associate: function(models) {
           // associations can be defined here
-          models.Users.belongsTo(models.UserRole) {
+          models.Users.belongsTo(models.UserRoles, {
             foreignKey: 'userRoleId',
-            sourceKey: 'id',
-          }
+            sourceKey: 'id',  // primary key
+          });
         },
       },
     },

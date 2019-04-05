@@ -28,7 +28,7 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserAnimationsModule,
     ToastrModule.forRoot(
  {
-      timeOut: 4000,
+      timeOut: 10000,
       closeButton: false,
       easing: 'ease-in',
       easeTime: 500,
