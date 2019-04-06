@@ -29,6 +29,7 @@ const createUser = async function (userInfo) {
     TE('Email is invalid');
   }
 }
+
 module.exports.createUser = createUser;
 
 const login = async function (req, res) {
