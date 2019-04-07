@@ -9,9 +9,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
     name: DataTypes.STRING,
-    createdUserId: {
-      type: DataTypes.INTEGER    
-},
     location: DataTypes.STRING,
     startingDayAndTime: DataTypes.DATE,
     endingDayAndTime: DataTypes.DATE,
@@ -19,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Events.associate = function(models) {
     // associations can be defined here
-    Events.belongsTo(models.Users)
-  };
+      models.Events.belongsTo(models.Users);
+    };
   return Events;
 };

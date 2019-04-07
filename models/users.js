@@ -9,16 +9,21 @@ module.exports = (sequelize, DataTypes) => {
     last: DataTypes.STRING,
     email: { type: DataTypes.STRING, unique: true, validate: { isEmail: { msg: 'Email is invalid' } } },
     phone: { type: DataTypes.STRING, allowNull: true, validate: { len: { args: [7, 20], msg: 'Phone number invalid.' }, isNumeric: { msg: 'Not a valid phone number.' } } },
-    isTrainer: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
     aboutMe: DataTypes.STRING,
     password: DataTypes.STRING
   }, {
       classMethods: {
-        associate: function (models) {
-          // associations can be defined here
-        }
+        // associations can be defined here
+        
       }
     });
+    Users.associate = function (models) {
+      models.Users.belongsTo(models.UserRoles, {
+        foreignKey: 'userRoleId',
+        sourceKey: 'id',
+      });
+    };
+
   Users.beforeSave(async (user) => {
     let err;
     if (user.changed('password')) {
