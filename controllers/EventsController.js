@@ -12,7 +12,7 @@ const create = async function (req, res) {
   } else {
     let err, event
 
-    [err, event] = await to(event.save());
+    [err, event] = await to(events.save());
     if (err) return ReE(res, err, 422);
     return ReS(res, event, 201);
   }
@@ -50,3 +50,40 @@ const update = async function (req, res) {
   return res.json(event);
 }
 module.exports.update = update;
+
+const getAll = async (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  let err, event;
+
+  let whereStatement = {};
+  if (req.query.name) {
+    whereStatement.name = {
+      $like: '%' + req.query.name + '%'
+    };
+  }
+
+  [err, event] = await to(Events.findAll({ include: [{ model: Events }], where: whereStatement }))
+
+  return res.json(event);
+}
+
+module.exports.getAll = getAll;
+
+const get = async (req, res) => {
+  let err, event;
+ // let eventId = parseInt(req.params.currentEventId)
+  let eventId = req.params.currentEventId[1]
+  res.setHeader('Content-Type', 'application/json');
+  console.log(eventId.length)
+  console.log(eventId)
+  console.log(Events)
+  console.log(req.params)
+  [err, event] = await to(Events.findById(eventId))
+  if (!event) {
+    res.statusCode = 404;
+    return res.json({ success: false, error: err });
+  }
+  return res.json(event);
+}
+module.exports.get = get;
+

@@ -19,7 +19,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Events.associate = function(models) {
     // associations can be defined here
-    console.log(models)
     Events.belongsTo(models.Users)
   };
   return Events;
