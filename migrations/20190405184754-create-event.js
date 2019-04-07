@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Events', {
+    return queryInterface.createTable( 'Events', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -12,7 +12,11 @@ module.exports = {
         type: Sequelize.STRING
       },
       createdUserId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'UserRoles',
+          key: 'id'
+        },
       },
       location: {
         type: Sequelize.STRING

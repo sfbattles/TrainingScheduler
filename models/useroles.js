@@ -1,6 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const UserRoles = sequelize.define('UserRoles', {
+  const UserRoles = sequelize.define(
+    'UserRoles', {
     id: {
       allowNull : false,
       autoIncrement: true,
