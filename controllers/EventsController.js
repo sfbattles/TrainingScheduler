@@ -1,4 +1,4 @@
-const Events = require('../models').events;
+const Events = require('../models').Events;
 const validator = require('validator');
 
 const create = async function (req, res) {
@@ -71,14 +71,11 @@ module.exports.getAll = getAll;
 
 const get = async (req, res) => {
   let err, event;
- // let eventId = parseInt(req.params.currentEventId)
-  let eventId = req.params.currentEventId[1]
+  let eventId = parseInt(req.params.currentEventId)
+
   res.setHeader('Content-Type', 'application/json');
-  console.log(eventId.length)
   console.log(eventId)
-  console.log(Events)
-  console.log(req.params)
-  [err, event] = await to(Events.findById(eventId))
+  [err, event] = await to(Events.findByPk(eventId))
   if (!event) {
     res.statusCode = 404;
     return res.json({ success: false, error: err });
