@@ -24,7 +24,10 @@ const update = async function (req, res) {
   res.setHeader('ContentType', 'application/json');
   let err, event, eventData, eventId;
   eventData = req.body;
-  eventId = req.params.currentEventId
+  eventId = req.params.currentEventId;
+  if (eventData.id) {
+    return ReE(res, 'Can Not Modify Id Field', 422);
+  }
   [err, event] = await to(Events.update(eventData, {
     where: {
       id: eventId
