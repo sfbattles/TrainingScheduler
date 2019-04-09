@@ -72,11 +72,10 @@ module.exports.getAll = getAll;
 
 const get = async (req, res) => {
   let err, event;
-  let eventId = parseInt(req.params.currentEventId)
+  let eventId = parseInt(req.params.currentEventId);
 
   res.setHeader('Content-Type', 'application/json');
-  console.log(eventId)
-  [err, event] = await to(Events.findByPk(eventId))
+  [err, event] = await to(Events.findByPk(eventId));
   if (!event) {
     res.statusCode = 404;
     return res.json({ success: false, error: err });
