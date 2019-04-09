@@ -24,13 +24,13 @@ const update = async function (req, res) {
   res.setHeader('ContentType', 'application/json');
   let err, event, eventData, eventId;
   eventData = req.body;
-  eventId = req.params.currentEventId;
+  eventId = req.params.currentEventId;   //currentEventId is the value from url
   if (eventData.id) {
     return ReE(res, 'Can Not Modify Id Field', 422);
   }
   [err, event] = await to(Events.update(eventData, {
     where: {
-      id: eventId
+      id: eventId //makes sure its the ID you want to modify.
     }
   }));     //sequelize save() 
   if (err) {
@@ -74,3 +74,27 @@ const get = async (req, res) => {
 }
 module.exports.get = get;
 
+const deleteEvent = async function (req, res) {
+ // res.setHeader('ContentType', 'application/json');
+  let err, event, eventData, eventId;
+  eventData = req.body;
+  eventId = req.params.currentEventId;   //currentEventId is the value from url
+  console.log(eventData);
+  console.log('Richard' + eventId);
+  [err, event] = await to(Events.destroy({
+    where: {
+      id: eventId //makes sure its the ID you want to delete.
+    }
+  }));     
+  if (err) {
+    console.log(err);
+    return ReE(res, err, 422);
+    }
+  console.log(event);
+  if (event === 0) {    //check if event was delete 0 mean not deleted and 1 means it was.
+    err = "Event not found could not delete"
+    return res.json({ success: false, error: err });
+  }
+  return ReS(res, event, 200);  //successfully deleted event.
+}
+module.exports.deleteEvent = deleteEvent;
