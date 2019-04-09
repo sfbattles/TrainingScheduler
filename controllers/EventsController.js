@@ -79,18 +79,12 @@ const deleteEvent = async function (req, res) {
   let err, event, eventData, eventId;
   eventData = req.body;
   eventId = req.params.currentEventId;   //currentEventId is the value from url
-  console.log(eventData);
-  console.log('Richard' + eventId);
   [err, event] = await to(Events.destroy({
     where: {
       id: eventId //makes sure its the ID you want to delete.
     }
   }));     
-  if (err) {
-    console.log(err);
-    return ReE(res, err, 422);
-    }
-  console.log(event);
+
   if (event === 0) {    //check if event was delete 0 mean not deleted and 1 means it was.
     err = "Event not found could not delete"
     return res.json({ success: false, error: err });
