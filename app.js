@@ -79,5 +79,6 @@ app.put(
 app.post('/events', eventsController.create);
 app.get('/events', eventsController.getAll);
 app.get('/events/:currentEventId', eventsController.get);
+app.patch('/events/:currentEventId', eventsController.update);
 app.post('/login', userController.login);
 module.exports = app;

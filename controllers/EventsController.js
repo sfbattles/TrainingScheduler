@@ -15,35 +15,27 @@ const create = async function (req, res) {
     if (err) {
       return ReE(res, err, 422);
     }
-      return res.json({ success: false, error: err });
-    }
-  
-    [err, event] = await to(Events.save());
-    if (err) {
-      return ReE(res, err, 422);
-    }  
-    return ReS(res, event, 201);
+      return ReS(res, event, 201);  //successful event was save send created status code.
+  }
 }
 module.exports.create = create;
 
 const update = async function (req, res) {
-  let err, event, data;
-  event = req.event;
-  data = req.body;
-  event.set(data);  //sequelize set command 
-  [err, event] = await to(Events.save());     //sequelize save() 
-  if (err) {
-    if (typeof err == 'object' && typeof err.message != 'undefined') {
-      err = err.message;
+  res.setHeader('ContentType', 'application/json');
+  let err, event, eventData, eventId;
+  eventData = req.body;
+  eventId = req.params.currentEventId
+  [err, event] = await to(Events.update(eventData, {
+    where: {
+      id: eventId
     }
-
-    if (typeof code !== 'undefined') res.statusCode = code;
-    res.statusCode = 422
-    return res.json({ success: false, error: err });
-  }
-
-  return res.json(event);
+  }));     //sequelize save() 
+  if (err) {
+    return ReE(res, err, 422);
+    }
+  return ReS(res, event, 201);  //successful event was save send created status code.
 }
+
 module.exports.update = update;
 
 const getAll = async (req, res) => {
