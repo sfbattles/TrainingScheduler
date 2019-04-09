@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     email: { type: DataTypes.STRING, unique: true, validate: { isEmail: { msg: 'Email is invalid' } } },
     phone: { type: DataTypes.STRING, allowNull: true, validate: { len: { args: [7, 20], msg: 'Phone number invalid.' }, isNumeric: { msg: 'Not a valid phone number.' } } },
     aboutMe: DataTypes.STRING,
-    password: DataTypes.STRING
+    password: DataTypes.STRING,
   }, {
       classMethods: {
         // associations can be defined here
@@ -18,10 +18,16 @@ module.exports = (sequelize, DataTypes) => {
       }
     });
     Users.associate = function (models) {
-      models.Users.belongsTo(models.UserRoles, {
-        foreignKey: 'userRoleId',
-        sourceKey: 'id',
-      });
+      models.Users.belongsTo(models.UserRoles, 
+        {
+          foreignKey: 'userRoleId',
+          sourceKey: 'id',
+        });
+      models.Users.belongsTo(models.Events,
+        {
+          foreignKey: 'CreatedUserId',
+          sourceKey: 'id',
+        });
     };
 
   Users.beforeSave(async (user) => {

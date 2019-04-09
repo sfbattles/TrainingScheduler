@@ -31,6 +31,16 @@ module.exports = {
     description: 'Learn one way to build applications with Angular and reuse your code and abilities to build apps for any deployment target. For web, mobile web, native mobile and native desktop',
     createdAt: new Date(),
     updatedAt: new Date()
+  },
+  {
+    name: 'Angular Tips and tricks',
+    createdUserId: 1,
+    location: 'dairy queen',
+    startingDayAndTime: '2019-06-10 10:00:00',
+    endingDayAndTime: '2019-06-10 12:00:00',
+    description: 'Learn one way tips with Angular',
+    createdAt: new Date(),
+    updatedAt: new Date()
   }], {});
   },
 

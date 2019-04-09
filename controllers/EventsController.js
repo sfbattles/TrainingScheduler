@@ -62,7 +62,7 @@ const getAll = async (req, res) => {
     };
   }
 
-  [err, event] = await to(Events.findAll({ include: [{ model: Events }], where: whereStatement }))
+  [err, event] = await to(Events.findAll({ where: whereStatement }))
   if (err) TE(err.message);
   
   return res.json(event);

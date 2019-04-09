@@ -11,15 +11,6 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      // createdUserId: {
-      //   type: Sequelize.INTEGER,
-      //    references: {
-      //      model: 'User',
-      //      key: 'id'
-      //    },
-      //    onUpdate: 'CASCADE',
-      //    onDelete: 'SET NULL',
-      // },
       location: {
         type: Sequelize.STRING
       },

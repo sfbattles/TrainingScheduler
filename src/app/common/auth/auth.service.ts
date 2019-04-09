@@ -7,6 +7,13 @@ export interface ILoginResponse {
     success: boolean;
     token?: string;
 }
+export interface ISignUp {
+    firstName: string;
+    lastName: string;
+    emailAddress: string;
+    password: string;
+    userRoleId: number;
+}
 
 @Injectable()
 export class AuthService {
@@ -20,6 +27,13 @@ export class AuthService {
     isAuthenticated(): boolean {
         return this.token ? true : false;
     }
+
+    signup(firstName: string,
+        lastName: string,
+        emailAddress: string,
+        password: string,
+        userRoleId: number): Observable<ISignUp> {
+        }
 
     login(email: string, password: string): Observable<ILoginResponse> {
         const data = {
