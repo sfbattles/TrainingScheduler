@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -15,12 +15,14 @@ import { LoginComponent } from './common/auth/login.component';
 import { TokenInterceptor } from './common/auth/token.interceptor';
 import { SignUpComponent } from './signup/signup.component';
 import { ToastrModule } from 'ngx-toastr';
+import { EventListComponent } from './event-list/event-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
+    EventListComponent,
     SignUpComponent
   ],
   imports: [
@@ -39,6 +41,7 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     NgbModule,
     AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [
     AuthService,

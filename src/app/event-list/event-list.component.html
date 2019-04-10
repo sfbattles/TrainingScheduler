@@ -1,0 +1,21 @@
+<h2> Event Information</h2>
+<form [formGroup]="eventForm">
+  <div class="row">
+    <div class="col-md-6">
+      <label>Name:</label> <input type="text" class="form-control" formControlName="name" placeholder="Enter Name"> <br>
+      <label>Location:</label> <input type="text" class="form-control" formControlName="location"> <br>
+      <label>Meeting Start Time:</label> 
+        <input type="datetime-local" 
+        class="form-control"
+        formControlName="startingDateAndTime">
+      <label>Meeting Ending Time:</label> <input type="datetime-local" class="form-control"
+        formControlName="endingDateAndTime">
+      <div class="form-group">
+        <label for="description">Enter Description of Event</label>
+        <textarea class="form-control" formControlName="description" id="description" rows="3"></textarea>
+      </div>
+    </div>    
+  </div>
+  <br>
+    <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
+</form>

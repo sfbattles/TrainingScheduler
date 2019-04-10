@@ -16,36 +16,37 @@ export class SignUpComponent {
   password = '';
 
   constructor(private toastr: ToastrService,
-              private authService: AuthService, 
-              private router: Router) {}
-      showSuccess(newUser) {
-                 const { firstName, lastName, emailAddress, password } = newUser;
-                 this.toastr.success(`Sucessfully Added Email Address ${emailAddress}`);
-                }
-      showError(errorMessage) {
-       this.toastr.error(errorMessage);
-     } 
+    private authService: AuthService,
+    private router: Router) { }
+    
+  showSuccess(newUser) {
+    const { firstName, lastName, emailAddress, password } = newUser;
+    this.toastr.success(`Sucessfully Added Email Address ${emailAddress}`);
+  }
+  showError(errorMessage) {
+    this.toastr.error(errorMessage);
+  }
 
-  signup() : void  {
+  signup(): void {
     const newUser = {
-      firstName:  this.firstName,
-      lastName:   this.lastName,
+      firstName: this.firstName,
+      lastName: this.lastName,
       emailAddress: this.emailAddress,
       password: this.password
     }
 
     const { firstName, lastName, emailAddress, password } = newUser;
     console.log(newUser);
-    if (firstName && lastName && emailAddress && password) {   
-      
+    if (firstName && lastName && emailAddress && password) {
+
       this.authService.signup(firstName,
-                              lastName,
-                              emailAddress,
-                              password).subscribe((response) => {
-          
-        this.router.navigateByUrl('/login');   
-        this.showSuccess(newUser);   //everything went well            
-      });
+        lastName,
+        emailAddress,
+        password).subscribe((response) => {
+
+          this.router.navigateByUrl('/login');
+          this.showSuccess(newUser);   //everything went well            
+        });
     } else {
       this.showError('Please complete all field');
     }
