@@ -23,11 +23,11 @@ module.exports = (sequelize, DataTypes) => {
           foreignKey: 'userRoleId',
           sourceKey: 'id',
         });
-      models.Users.belongsTo(models.Events,
-        {
-          foreignKey: 'CreatedUserId',
-          sourceKey: 'id',
-        });
+      // models.Users.belongsTo(models.Events,
+      //   {
+      //     foreignKey: 'CreatedUserId',
+      //     sourceKey: 'id',
+      //   });
     };
 
   Users.beforeSave(async (user) => {

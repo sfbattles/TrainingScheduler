@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { EmailValidator } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../common/auth/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,18 +10,19 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./signup.component.css']
 })
 export class SignUpComponent {
-  title = 'Sign Up';
   firstName = '';
   lastName = '';
   emailAddress = '';
   password = '';
 
-  constructor(private toastr: ToastrService) {}
-     showSuccess(newUser) {
-      const { firstName, lastName, emailAddress, password } = newUser;
-      this.toastr.success(`Sucessfully Added Email Address ${emailAddress}`);
-     }
-     showError(errorMessage) {
+  constructor(private toastr: ToastrService,
+              private authService: AuthService, 
+              private router: Router) {}
+      showSuccess(newUser) {
+                 const { firstName, lastName, emailAddress, password } = newUser;
+                 this.toastr.success(`Sucessfully Added Email Address ${emailAddress}`);
+                }
+      showError(errorMessage) {
        this.toastr.error(errorMessage);
      } 
 
@@ -31,14 +33,21 @@ export class SignUpComponent {
       emailAddress: this.emailAddress,
       password: this.password
     }
-    const { firstName, lastName, emailAddress, password } = newUser;
 
+    const { firstName, lastName, emailAddress, password } = newUser;
+    console.log(newUser);
     if (firstName && lastName && emailAddress && password) {   
-      this.showSuccess(newUser);
-       console.log(newUser);
+      
+      this.authService.signup(firstName,
+                              lastName,
+                              emailAddress,
+                              password).subscribe((response) => {
+          
+        this.router.navigateByUrl('/login');   
+        this.showSuccess(newUser);   //everything went well            
+      });
     } else {
       this.showError('Please complete all field');
-      console.log("Please complete all field");
     }
   }
 }

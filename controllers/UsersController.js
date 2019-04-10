@@ -44,11 +44,7 @@ const login = async function (req, res) {
 module.exports.login = login;
 
 const authUser = async function (userInfo) {//returns token
-
-
   if (!userInfo.email) TE('Please enter an email to login');
-
-
   if (!userInfo.password) TE('Please enter a password to login');
 
   let user;
@@ -75,6 +71,7 @@ const update = async function (req, res) {
   let err, user, data;
   user = req.user;
   data = req.body;
+  console.log('Richard' + data);
   user.set(data);  //sequelize set command 
   [err, user] = await to(user.save());     //sequelize save() 
   if (err) {

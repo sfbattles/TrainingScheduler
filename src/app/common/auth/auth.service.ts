@@ -7,12 +7,13 @@ export interface ILoginResponse {
     success: boolean;
     token?: string;
 }
+
 export interface ISignUp {
-    firstName: string;
-    lastName: string;
-    emailAddress: string;
-    password: string;
-    userRoleId: number;
+        firstName: string;
+        lastName: string;
+        emailAddress: string;
+        password: string;
+        userRoleId: number;
 }
 
 @Injectable()
@@ -28,18 +29,12 @@ export class AuthService {
         return this.token ? true : false;
     }
 
-    signup(firstName: string,
-        lastName: string,
-        emailAddress: string,
-        password: string,
-        userRoleId: number): Observable<ISignUp> {
-        }
-
     login(email: string, password: string): Observable<ILoginResponse> {
         const data = {
             email: email,
             password: password,
         };
+        console.log(email, password);
         return this.http.post<ILoginResponse>('http://localhost:3000/login', data)
             .do((response) => {
                 this.token.next(response && response.success && response.token || null);
@@ -48,5 +43,18 @@ export class AuthService {
 
     logout(): void {
         this.token.next(null);
+    }
+    signup( firstName: string,
+            lastName: string,
+            emailAddress: string,
+            password: string) : Observable<ISignUp> {
+        const data = {
+              first: firstName,
+              last: lastName,
+              email: emailAddress,
+              password: password,
+              userRoleId: 2
+            };
+        return this.http.post<any>('http://localhost:3000/users',data)
     }
 }
