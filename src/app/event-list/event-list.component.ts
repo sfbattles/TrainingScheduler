@@ -13,10 +13,10 @@ export class EventListComponent implements OnInit {
   
   eventForm = new FormGroup({
     name : new FormControl('',Validators.required),
-    location : new FormControl('Enter Location',Validators.required),
+    location : new FormControl('',Validators.required),
     startingDateAndTime : new FormControl(''),
     endingDateAndTime : new FormControl(''),
-    description : new FormControl('Enter Description'),
+    description : new FormControl(''),
   });
 
   ngOnInit() {

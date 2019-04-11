@@ -16,6 +16,7 @@ import { TokenInterceptor } from './common/auth/token.interceptor';
 import { SignUpComponent } from './signup/signup.component';
 import { ToastrModule } from 'ngx-toastr';
 import { EventListComponent } from './event-list/event-list.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,9 @@ import { EventListComponent } from './event-list/event-list.component';
     HomeComponent,
     LoginComponent,
     EventListComponent,
-    SignUpComponent
+    UserListComponent,
+    SignUpComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
