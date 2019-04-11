@@ -14,13 +14,15 @@ export class SignUpComponent {
   lastName = '';
   emailAddress = '';
   password = '';
+  phone = '';
+  aboutMe = '';
 
   constructor(private toastr: ToastrService,
     private authService: AuthService,
     private router: Router) { }
     
   showSuccess(newUser) {
-    const { firstName, lastName, emailAddress, password } = newUser;
+    const { emailAddress} = newUser;
     this.toastr.success(`Sucessfully Added Email Address ${emailAddress}`);
   }
   showError(errorMessage) {
@@ -32,22 +34,21 @@ export class SignUpComponent {
       firstName: this.firstName,
       lastName: this.lastName,
       emailAddress: this.emailAddress,
-      password: this.password
+      password: this.password,
+      phone: this.phone,
+      aboutMe: this.aboutMe
     }
 
-    const { firstName, lastName, emailAddress, password } = newUser;
+    const { firstName, lastName, emailAddress, password, phone, aboutMe } = newUser;
     console.log(newUser);
     if (firstName && lastName && emailAddress && password) {
 
-      this.authService.signup(firstName,
-        lastName,
-        emailAddress,
-        password).subscribe((response) => {
-
+      this.authService.signup( firstName, lastName, emailAddress, password, phone, aboutMe ).subscribe((response) => {
           this.router.navigateByUrl('/login');
           this.showSuccess(newUser);   //everything went well            
         });
     } else {
+      
       this.showError('Please complete all field');
     }
   }

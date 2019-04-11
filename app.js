@@ -75,7 +75,7 @@ app.put('/users',
         passport.authenticate('jwt', { session: false }),
         userController.update);
 app.post('/events', 
-        //  passport.authenticate('jwt', { session: false }),
+          passport.authenticate('jwt', { session: false }),
           eventsController.create);
 
 app.get('/events', 
@@ -83,23 +83,23 @@ app.get('/events',
         eventsController.getAll);
 
 app.get('/events/:currentEventId', 
-        //passport.authenticate('jwt', { session: false }),
+        passport.authenticate('jwt', { session: false }),
         eventsController.get);
 
 app.delete('/events/:currentEventId', 
-        //  passport.authenticate('jwt', { session: false }),
+          passport.authenticate('jwt', { session: false }),
           eventsController.deleteEvent);
 
 app.patch('/events/:currentEventId', 
-        //  passport.authenticate('jwt', { session: false }),
+          passport.authenticate('jwt', { session: false }),
           eventsController.update);
 
 app.post('/login', 
-        //  passport.authenticate('jwt', { session: false }),
+          passport.authenticate('jwt', { session: false }),
           userController.login);
 
 app.post('/sign-up',
-        //  passport.authenticate('jwt', { session: false }),
+          passport.authenticate('jwt', { session: false }),
           userController.create);
 
 module.exports = app;

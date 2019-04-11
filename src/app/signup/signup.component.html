@@ -1,19 +1,48 @@
 <h2>SignUp</h2>
 <form>
+    <div class="row">
+      <div class="col-md-6">
+        <label>Email</label>
+        <input type="text" class="form-control" [(ngModel)]="emailAddress" name="email"/>
+        <label>Password</label>
+        <input type="password" class="form-control" [(ngModel)]="password" name="password" />
+        <label>First Name</label>
+        <input type="text" class="form-control" [(ngModel)]="firstName" name="firstName"/>
+        <label>Last Name</label>
+        <input type="text" class="form-control" [(ngModel)]="lastName" name="lastName"/>
+        <label>Phone Number</label>
+        <input type="text" class="form-control" [(ngModel)]="phone" name="phone"/>
+        <label for="aboutMe">About Me</label>
+        <textarea class="form-control"          
+          id="aboutMe" rows="3" [(ngModel)]="aboutMe" name="aboutMe" placeholder="Provide information about yourself"></textarea>
+      </div>
+      <div class="col-md-6">
+      </div>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary" (click)="signup()">Submit</button>
+  </form>
+<!-- <form [formGroup]="signUpForm">
   <div class="row">
     <div class="col-md-6">
       <label>Email</label>
-      <input type="text" class="form-control" [(ngModel)]="emailAddress" name="email"/>
+      <input type="text" class="form-control" formControlName="email"/>
       <label>Password</label>
-      <input type="password" class="form-control" [(ngModel)]="password" name="password" />
+      <input type="password" class="form-control" formControlName="password" />
       <label>First Name</label>
-      <input type="text" class="form-control" [(ngModel)]="firstName" name="firstName"/>
+      <input type="text" class="form-control" formControlName="firstName"/>
       <label>Last Name</label>
-      <input type="text" class="form-control" [(ngModel)]="lastName" name="lastName"/>
+      <input type="text" class="form-control" formControlName="lastName"/>
+      <label>Phone Number</label>
+      <input type="text" class="form-control" formControlName="phoneNumber"/>
+      <label for="aboutMe">About Me</label>
+        <textarea class="form-control" 
+          formControlName="aboutMe" 
+          id="aboutMe" rows="3" placeholder="Give some Information about yourself"></textarea>
     </div>
     <div class="col-md-6">
     </div>
   </div>
   <br>
   <button type="submit" class="btn btn-primary" (click)="signup()">Submit</button>
-</form>
+</form> -->

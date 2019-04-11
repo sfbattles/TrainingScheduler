@@ -13,6 +13,8 @@ export interface ISignUp {
         lastName: string;
         emailAddress: string;
         password: string;
+        phone: string;
+        aboutMe: string
         userRoleId: number;
 }
 
@@ -47,12 +49,16 @@ export class AuthService {
     signup( firstName: string,
             lastName: string,
             emailAddress: string,
-            password: string) : Observable<ISignUp> {
+            password: string,
+            phone: string, 
+            aboutMe: string) : Observable<ISignUp> {
         const data = {
               first: firstName,
               last: lastName,
               email: emailAddress,
               password: password,
+              phone: phone,
+              aboutMe: aboutMe,
               userRoleId: 2
             };
         return this.http.post<any>('http://localhost:3000/users',data)
