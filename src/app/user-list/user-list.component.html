@@ -1,10 +1,30 @@
 <h2> User Administration Information</h2>
 <form [formGroup]="userListForm">
-  <div class="row">
-    <div class="col-md-6">
-      <label>First Name:</label> <input type="text" class="form-control" formControlName="firstName">
-      <label>Last Name:</label> <input type="text" class="form-control" formControlName="lastName">
-      <label>Email:</label> <input type="text" class="form-control" formControlName="email"> <br>
-    </div>    
+  <div class="container">
+    <div class="form-row">
+      <div class="col-4">
+        <label>First Name:</label>
+      </div>
+      <div class="col-3">
+        <label>Last Name:</label>
+      </div>
+      <div class="col-4">
+        <label>Email:</label>
+      </div>
+    </div>
+    <div class="form-row align-items-center">
+      <div class="col-4">
+        <input type="text" class="form-control" formControlName="email">
+      </div>
+      <div class="col-3">
+        <input type="text" class="form-control" formControlName="firstName">
+      </div>
+      <div class="col-4">
+        <input type="text" class="form-control" formControlName="lastName">
+      </div>
+      <div class="col-1" >
+        <button class="btn-primary">Edit</button>
+      </div>
+    </div>
   </div>
 </form>
