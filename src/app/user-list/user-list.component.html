@@ -2,11 +2,9 @@
 <form [formGroup]="userListForm">
   <div class="row">
     <div class="col-md-6">
-      <label>First Name:</label> <input type="text" class="form-control" formControlName="firstName" placeholder=""> <br>
-      <label>Last Name:</label> <input type="text" class="form-control" formControlName="lastName" placeholder=""> <br>
+      <label>First Name:</label> <input type="text" class="form-control" formControlName="firstName">
+      <label>Last Name:</label> <input type="text" class="form-control" formControlName="lastName">
       <label>Email:</label> <input type="text" class="form-control" formControlName="email"> <br>
     </div>    
   </div>
-  <br>
-    <button type="submit" class="btn btn-primary" (click)="search()">Search</button>
 </form>
