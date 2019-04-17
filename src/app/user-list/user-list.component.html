@@ -12,9 +12,9 @@
         <label>Email:</label>
       </div>
     </div>
-    <div class="form-row align-items-center">
+    <div class="form-row align-items-center" *ngFor="let user of userList">
       <div class="col-4">
-        <input type="text" class="form-control" formControlName="email">
+        <input type="text" class="form-control" formControlName="email" readonly>
       </div>
       <div class="col-3">
         <input type="text" class="form-control" formControlName="firstName">

@@ -9,9 +9,9 @@ import { UserListComponent } from './user-list/user-list.component';
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'admin/user-list', component: UserListComponent },
+  { path: 'admin/users-list', component: UserListComponent },
   { path: 'sign-up', component: SignUpComponent },
-  { path: 'events', component: EventListComponent},
+  { path: 'events-list', component: EventListComponent},
   { path: '**', component: HomeComponent },
 ];
 

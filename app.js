@@ -70,6 +70,9 @@ if (CONFIG.app === 'dev') {
   models.sequelize.sync();
 }
 
+app.get('/admin/users-list', 
+        passport.authenticate('jwt', { session: false }),
+        userController.getAll);
 app.post('/users', userController.create);
 app.put('/users',
         passport.authenticate('jwt', { session: false }),
@@ -94,12 +97,10 @@ app.patch('/events/:currentEventId',
           passport.authenticate('jwt', { session: false }),
           eventsController.update);
 
-app.post('/login', 
-          passport.authenticate('jwt', { session: false }),
+app.post('/login',
           userController.login);
 
 app.post('/sign-up',
-          passport.authenticate('jwt', { session: false }),
           userController.create);
 
 module.exports = app;

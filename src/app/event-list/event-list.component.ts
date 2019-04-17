@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { EventService } from '../services/event.service';
+import { IEvent } from "../IEvent";
 
 @Component({
   selector: 'app-event-list',
@@ -9,7 +11,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class EventListComponent implements OnInit {
 
-  constructor(private toastr: ToastrService) { }
+  constructor(private toastr: ToastrService,
+    private eventService: EventService) { }
   
   eventForm = new FormGroup({
     name : new FormControl('',Validators.required),
@@ -19,8 +22,11 @@ export class EventListComponent implements OnInit {
     description : new FormControl(''),
   });
 
+  eventList: IEvent[];
+
   ngOnInit() {
   }
+
   showError(errorMessage) {
     this.toastr.error(errorMessage);
   }
@@ -29,5 +35,11 @@ export class EventListComponent implements OnInit {
       this.showError('Name Is Invalid')
     }
     console.log(this.eventForm.controls.name.invalid);
+  }
+  getAllEvents() {
+    this.eventService.getAll().subscribe((eventList) => {
+      //this.eventList = eventList;
+      console.log(eventList);
+    });
   }
 }

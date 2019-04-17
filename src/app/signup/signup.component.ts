@@ -48,7 +48,7 @@ export class SignUpComponent {
           this.showSuccess(newUser);   //everything went well            
         });
     } else {
-      
+
       this.showError('Please complete all field');
     }
   }
