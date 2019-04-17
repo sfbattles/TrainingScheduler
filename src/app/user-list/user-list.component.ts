@@ -21,7 +21,7 @@ export class UserListComponent implements OnInit {
   getAllUsers() {
     this.userService.getAll().subscribe((theuserlist) =>  {
       console.log(theuserlist)
-   // this.users = users
+    this.userlist = theuserlist
     })
   }
 }
