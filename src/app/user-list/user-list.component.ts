@@ -12,21 +12,16 @@ export class UserListComponent implements OnInit {
   
   constructor(private userService: UserService) { }
 
-  userListForm = new FormGroup({
-    firstName : new FormControl('',Validators.required),
-    lastName : new FormControl('',Validators.required),
-    email : new FormControl('',Validators.required)
-  });
-  
-  userList: IUser[];
+  userlist: IUser[];
 
   ngOnInit() {
+    this.getAllUsers();
   }
 
   getAllUsers() {
-    this.userService.getAll().subscribe((userslist) =>  {
-      console.log(userslist)
-   // this.userList = userslist
+    this.userService.getAll().subscribe((theuserlist) =>  {
+      console.log(theuserlist)
+   // this.users = users
     })
   }
 }
