@@ -11,7 +11,7 @@ export class EventService {
 
   constructor(private http: HttpClient) {}
     
-  getAll(): Observable<IEvent> {
-    return this.http.get<IEvent>('http://localhost:3000/getAll');
+  getAll(): Observable<IEvent[]> {
+    return this.http.get<IEvent[]>('http://localhost:3000/getAll');
   }
 }

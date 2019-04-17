@@ -38,7 +38,7 @@ export class EventListComponent implements OnInit {
   }
   getAllEvents() {
     this.eventService.getAll().subscribe((eventList) => {
-      //this.eventList = eventList;
+      this.eventList = eventList;
       console.log(eventList);
     });
   }

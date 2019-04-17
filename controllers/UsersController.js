@@ -5,9 +5,9 @@ const getAll = async function(req, res) {
   res.setHeader('Content-Type', 'application/json');
   let err, users;
   let whereStatement = {};
-  if (req.query.name) {
-    whereStatement.name = {
-      $like: '%' + req.query.name + '%',
+  if (req.query.email) {
+    whereStatement.email = {
+      $like: '%' + req.query.email + '%',
     };
   }
   [err, users] = await to(
