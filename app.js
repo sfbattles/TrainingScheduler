@@ -70,11 +70,17 @@ if (CONFIG.app === 'dev') {
   models.sequelize.sync();
 }
 
+
 app.get('/admin/users-list', 
         passport.authenticate('jwt', { session: false }),
         userController.getAll);
+
+app.get('/admin/user-detail/:currentUserId', 
+        passport.authenticate('jwt', { session: false }),
+        userController.get);
+
 app.post('/users', userController.create);
-app.put('/users',
+app.put('/admin/user-detail/:currentUserId',
         passport.authenticate('jwt', { session: false }),
         userController.update);
 app.post('/events', 

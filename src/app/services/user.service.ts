@@ -18,4 +18,16 @@ export class UserService {
   get(text:string): Observable<IUser[]> {
     return this.http.get<IUser[]>(`http://localhost:3000/admin/users-list?email=${text}`);
   }
+
+  getById(id: number): Observable<IUser> {
+    console.log('This is the id' + id)
+    return this.http.get<IUser>(`http://localhost:3000/admin/user-detail/${id}`);
+  }
+
+  saveUser(user: IUser): Observable<IUser> {
+    if (user.id) {
+      console.log("this is the service" + user.id)
+      return this.http.put<IUser>(`http://localhost:3000/admin/user-detail/${user.id}`, user);
+    } 
+  }
 }

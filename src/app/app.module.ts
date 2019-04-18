@@ -17,6 +17,7 @@ import { SignUpComponent } from './signup/signup.component';
 import { ToastrModule } from 'ngx-toastr';
 import { EventListComponent } from './event-list/event-list.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { UserListComponent } from './user-list/user-list.component';
     EventListComponent,
     UserListComponent,
     SignUpComponent,
-    UserListComponent
+    UserListComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,

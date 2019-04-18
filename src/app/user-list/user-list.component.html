@@ -16,10 +16,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of userList">
+      <tr *ngFor="let user of userList"
+       routerLink="/admin/user-detail/{{user.id}}">
         <td>{{ user.first }}</td> 
-        <td>{{ user.last}}</td>
-        <td>{{ user.email}}</td> 
+        <td>{{ user.last }}</td>
+        <td>{{ user.email }}</td> 
+        <td>{{ user.id }}</td> 
       </tr>
     </tbody>
   </table>

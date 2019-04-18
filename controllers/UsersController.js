@@ -18,6 +18,21 @@ const getAll = async function(req, res) {
 };
 module.exports.getAll = getAll;
 
+const get = async (req, res) => {
+  let err, user;
+  let userId = parseInt(req.params.currentUserId);
+
+  res.setHeader('Content-Type', 'application/json');
+  [err, user] = await to(Users.findByPk(userId));
+  if (!user) {
+    res.statusCode = 404;
+    return res.json({ success: false, error: err });
+  }
+  return res.json(user);
+};
+
+module.exports.get = get;
+
 const create = async function (req, res) {
   res.setHeader('ContentType', 'application/json');
   const body = req.body;
