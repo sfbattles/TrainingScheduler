@@ -5,6 +5,7 @@ import { EventService } from '../services/event.service';
 import { IEvent } from "../IEvent";
 import {NgbDateStruct, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 
+
 @Component({
   selector: 'app-event-list',
   templateUrl: './event-list.component.html',
@@ -15,18 +16,27 @@ export class EventListComponent implements OnInit {
 
   model: NgbDateStruct;
   date: {year: number, month: number};
+  time = {hour: 13, minute: 30};
+  meridian = true;
 
   constructor(private toastr: ToastrService,
     private eventService: EventService,
-    private calendar: NgbCalendar) { }
+    private calendar: NgbCalendar) {}
   
   eventForm = new FormGroup({
     name : new FormControl('',Validators.required),
     location : new FormControl('',Validators.required),
-    startingDateAndTime : new FormControl(''),
-    endingDateAndTime : new FormControl(''),
+    startingDate : new FormControl(''),
+    startingTime : new FormControl(''),    
+    endingDate : new FormControl(''),
+    endingTime : new FormControl(''),
     description : new FormControl(''),
   });
+
+  toggleMeridian() {
+    this.meridian = !this.meridian;
+}
+
   selectToday() {
     this.model = this.calendar.getToday();
   }

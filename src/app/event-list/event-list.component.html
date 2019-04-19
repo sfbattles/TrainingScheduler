@@ -6,28 +6,27 @@
   <div class="row">
     <div class="col-md-6">
       <label>Name:</label> <input type="text" class="form-control" formControlName="name" placeholder="Enter Name"> <br>
-      <label>Location:</label> <input type="text" class="form-control" formControlName="location" placeholder="Enter Location"> <br>
-      <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
-      <button class="btn btn-sm btn-outline-primary mr-2" (click)="selectToday()">Select Today</button>
-      <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo()">To current month</button>
-      <!-- <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo({year: 2013, month: 2})">To Feb 2013</button> -->
- 
-      <hr/>
-
-      <label>Meeting Start Time:</label> 
-        <input type="datetime-local" 
-        class="form-control"
-        formControlName="startingDateAndTime">
-      <label>Meeting Ending Time:</label> <input type="datetime-local" class="form-control"
-        formControlName="endingDateAndTime">
+      <label>Location:</label> <input type="text" class="form-control" formControlName="location"
+        placeholder="Enter Location"> <br>
+      <form class="form-inline">
+        <div class="form-group">
+          <div class="input-group">
+            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker
+              #d="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <ngb-timepicker formControlName="startingTime" [meridian]="meridian"></ngb-timepicker>
       <div class="form-group">
         <label for="description">Enter Description of Event</label>
-        <textarea class="form-control" 
-          formControlName="description" 
-          id="description" rows="3" placeholder="Enter Description"></textarea>
+        <textarea class="form-control" formControlName="description" id="description" rows="3"
+          placeholder="Enter Description"></textarea>
       </div>
-    </div>    
+    </div>
   </div>
   <br>
-    <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
+  <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
 </form>
