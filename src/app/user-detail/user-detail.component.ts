@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { IUser } from '../IUser';
-import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-detail',
@@ -11,7 +12,17 @@ import { ActivatedRoute } from '@angular/router';
 export class UserDetailComponent implements OnInit {
 
   constructor(private userService: UserService,
-    private activeRoute: ActivatedRoute,) { }
+    private activeRoute: ActivatedRoute,
+    private toastr: ToastrService,
+    public router: Router) { }
+
+  showSuccess(newUser) {
+    const { email } = newUser;
+    this.toastr.success(`Sucessfully Updated User Information for email address ${email}`);
+  }
+  showError(errorMessage) {
+    this.toastr.error(errorMessage);
+  }
   
   userDetailForm = new FormGroup({
     first : new FormControl('',Validators.required),
@@ -33,10 +44,11 @@ export class UserDetailComponent implements OnInit {
       (user) => {
         console.log(user);
         this.currentUser = user;
-        this.userDetailForm.patchValue(user);
+        this.userDetailForm.patchValue(user);         
       },
       (error) => {
         console.log('failed getting User by Id');
+        
       },
     );  
   }
@@ -45,14 +57,18 @@ export class UserDetailComponent implements OnInit {
     const userToSave = this.userDetailForm.value;
     console.log('userTosave' + this.userDetailForm)
     userToSave.id = this.currentUser.id
-    console.log("this is the user to save" + userToSave)
+    console.log (userToSave)
     this.userService.saveUser(userToSave).subscribe(
       (response) => {
         console.log(response);
-        console.log('Saved Todo');
+        console.log('Saved Todo');        
+        this.showSuccess(response);   //everything went well 
+        this.router.navigate(["admin/users-list/"]);
       },
       (error) => {
         console.log('failed saving toDo');
+        this.showError('failed saving user' + error)
+        this.router.navigate(["admin/users-list/"]);
       },
     );
   }

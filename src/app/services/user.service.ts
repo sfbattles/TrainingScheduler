@@ -25,6 +25,9 @@ export class UserService {
   }
 
   saveUser(user: IUser): Observable<IUser> {
+    console.log("I am in the house")
+    console.log(user.id)
+    
     if (user.id) {
       console.log("this is the service" + user.id)
       return this.http.put<IUser>(`http://localhost:3000/admin/user-detail/${user.id}`, user);

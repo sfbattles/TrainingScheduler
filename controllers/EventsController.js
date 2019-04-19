@@ -79,6 +79,7 @@ const deleteEvent = async function (req, res) {
   let err, event, eventData, eventId;
   eventData = req.body;
   eventId = req.params.currentEventId;   //currentEventId is the value from url
+  
   [err, event] = await to(Events.destroy({
     where: {
       id: eventId //makes sure its the ID you want to delete.

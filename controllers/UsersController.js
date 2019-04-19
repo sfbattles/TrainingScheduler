@@ -101,13 +101,16 @@ module.exports.authUser = authUser;
 
 const update = async function (req, res) {
   let err, user, data;
-  user = req.user;
   data = req.body;
-  console.log('Richard' + data);
+  [err, user] = await to(Users.findByPk(data.id));
+  if(err) console.log('err', err);
+  console.log("data for update")
+  console.log(data);
+  console.log(user)
   user.set(data);  //sequelize set command 
   [err, user] = await to(user.save());     //sequelize save() 
   if (err) {
-    if (typeof err == 'object' && typeof err.message != 'undefined') {
+    if (typeof err === 'object' && typeof err.message !== 'undefined') {
       err = err.message;
     }
 
@@ -119,3 +122,26 @@ const update = async function (req, res) {
   return res.json(user);
 }
 module.exports.update = update;
+
+const updateOther = async function (req, res) {
+  let err, user, data;
+  user = req.user;
+  data = req.body;
+  console.log("data for update")
+  console.log(data);
+  console.log(user)
+  user.set(data);  //sequelize set command 
+  [err, user] = await to(user.save());     //sequelize save() 
+  if (err) {
+    if (typeof err === 'object' && typeof err.message !== 'undefined') {
+      err = err.message;
+    }
+
+    if (typeof code !== 'undefined') res.statusCode = code;
+    res.statusCode = 422
+    return res.json({ success: false, error: err });
+  }
+
+  return res.json(user);
+}
+module.exports.updateOther = updateOther;
