@@ -1,4 +1,5 @@
 'use strict';
+let faker = require('faker');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -13,32 +14,39 @@ module.exports = {
       }], {});
     */
    return queryInterface.bulkInsert('Events',[{
-     name: 'NodeJs Walk Threw',
-     createdUserId: 1,
-     location: '120 braithwaite lane',
-     startingDayAndTime: '2019-05-05 09:00:00',
-     endingDayAndTime: '2019-05-05 11:00:00',
-     description: 'learn node with model and migrations and seeding',
-     createdAt: new Date(),
-     updatedAt: new Date()
+    // name: 'Gardening convention',
+    name: "JavaScript 101 Event",
+    createdUserId: 2,
+    location: faker.address.streetAddress(),
+    startDate: '2019-07-10 00:00:00',
+    startTime: '2019-07-10 10:00:00',
+    endDate: '2019-07-12 12:00:00',
+    endTime: '2019-07-12 12:00:00',
+    description: 'JavaScript learn modern practices',
+    createdAt: new Date(),
+    updatedAt: new Date()
    },
    {
-    name: 'Angular 7.0',
+    name: 'Node JS Convention',
     createdUserId: 1,
-    location: 'dairy queen',
-    startingDayAndTime: '2019-04-24 10:00:00',
-    endingDayAndTime: '2019-04-24 11:00:00',
-    description: 'Learn one way to build applications with Angular and reuse your code and abilities to build apps for any deployment target. For web, mobile web, native mobile and native desktop',
+    location: faker.address.streetAddress(),
+    startDate: '2019-07-10 00:00:00',
+    startTime: '2019-07-10 10:00:00',
+    endDate: '2019-07-12 12:00:00',
+    endTime: '2019-07-12 18:00:00',
+    description: 'Learn backend development',
     createdAt: new Date(),
     updatedAt: new Date()
   },
   {
-    name: 'Angular Tips and tricks',
+    name: 'Angular Convension',
     createdUserId: 1,
-    location: 'dairy queen',
-    startingDayAndTime: '2019-06-10 10:00:00',
-    endingDayAndTime: '2019-06-10 12:00:00',
-    description: 'Learn one way tips with Angular',
+    location: faker.address.streetAddress(),
+    startDate: '2019-06-10 08:00:00',
+    startTime: '2019-06-10 10:00:00',
+    endDate: '2019-06-12 12:00:00',
+    endTime: '2019-06-12 18:00:00',
+    description: 'Learn tips with Angular',
     createdAt: new Date(),
     updatedAt: new Date()
   }], {});

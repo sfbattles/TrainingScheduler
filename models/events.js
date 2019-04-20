@@ -10,8 +10,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     name: DataTypes.STRING,
     location: DataTypes.STRING,
-    startingDayAndTime: DataTypes.DATE,
-    endingDayAndTime: DataTypes.DATE,
+    startDate: DataTypes.DATE,
+    startTime: DataTypes.DATE,
+    endDate: DataTypes.DATE,
+    endTime: DataTypes.DATE,
     description: DataTypes.STRING,
     CreatedUserId: DataTypes.INTEGER
   }, {});

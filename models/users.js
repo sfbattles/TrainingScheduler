@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     phone: { type: DataTypes.STRING, allowNull: true, validate: { len: { args: [7, 20], msg: 'Phone number invalid.' }, isNumeric: { msg: 'Not a valid phone number.' } } },
     aboutMe: DataTypes.STRING,
+    isTrainer: DataTypes.INTEGER,
     password: DataTypes.STRING,
   }, {
       classMethods: {

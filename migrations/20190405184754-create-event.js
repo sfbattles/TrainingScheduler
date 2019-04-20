@@ -14,10 +14,16 @@ module.exports = {
       location: {
         type: Sequelize.STRING
       },
-      startingDayAndTime: {
+      startDate: {
         type: Sequelize.DATE
       },
-      endingDayAndTime: {
+      startTime: {
+        type: Sequelize.DATE
+      },
+      endDate: {
+        type: Sequelize.DATE
+      },
+      endTime: {
         type: Sequelize.DATE
       },
       description: {

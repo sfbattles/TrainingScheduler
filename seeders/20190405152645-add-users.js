@@ -1,26 +1,41 @@
 'use strict';
+let faker = require('faker');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('users', [{
-      email: 'richard.long.e@gmail.com',
+      email: faker.internet.email(),
       password: '$2b$10$3.9II2U8nSO6eOmXqQTWsuAUsZHo4PmAJ/uIjrOwy5R3WYsIpj..m',
-      first: 'Richard',
-      last: 'Long',
+      first: faker.name.firstName(),
+      last: faker.name.lastName(),
       phone: '2155384446',
-      aboutme: 'I am a programmer',
+      aboutme: faker.lorem.paragraph() ,
       userRoleId: 1,
+      isTrainer: 1,
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
-      email: 'christine.long.e@gmail.com',
+      email: faker.internet.email(),
       password: '$2b$10$3.9II2U8nSO6eOmXqQTWsuAUsZHo4PmAJ/uIjrOwy5R3WYsIpj..m',
-      first: 'Christine',
-      last: 'Long',
-      phone: '2155384446',
-      aboutme: 'I am a healthcare provider',
-      userRoleId: 2,
+      first: faker.name.firstName(),
+      last: faker.name.lastName(),
+      phone: faker.phone.phoneNumber(),
+      aboutme: faker.lorem.sentence(),
+      userRoleId: 1,
+      isTrainer: 1,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      email: faker.internet.email(),
+      password: '$2b$10$3.9II2U8nSO6eOmXqQTWsuAUsZHo4PmAJ/uIjrOwy5R3WYsIpj..m',
+      first: faker.name.firstName(),
+      last: faker.name.lastName(),
+      phone: faker.phone.phoneNumber(),
+      aboutme: faker.lorem.sentence(),
+      userRoleId: 1,
+      isTrainer: faker.random.boolean(),
       createdAt: new Date(),
       updatedAt: new Date()
     }], {});

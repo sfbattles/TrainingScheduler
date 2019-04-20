@@ -26,10 +26,10 @@ export class EventListComponent implements OnInit {
   eventForm = new FormGroup({
     name : new FormControl('',Validators.required),
     location : new FormControl('',Validators.required),
-    startingDate : new FormControl(''),
-    startingTime : new FormControl(''),    
-    endingDate : new FormControl(''),
-    endingTime : new FormControl(''),
+    startDate : new FormControl(''),
+    startTime : new FormControl(''),    
+    endDate : new FormControl(''),
+    endTime : new FormControl(''),
     description : new FormControl(''),
   });
 

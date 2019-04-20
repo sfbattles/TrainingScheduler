@@ -26,6 +26,9 @@ module.exports = {
       password: {
         type: Sequelize.STRING,
       },
+      isTrainer: {
+        type: Sequelize.INTEGER,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
