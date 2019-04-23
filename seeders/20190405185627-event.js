@@ -17,7 +17,7 @@ module.exports = {
     // name: 'Gardening convention',
     name: "JavaScript 101 Event",
     createdUserId: 2,
-    location: faker.address.streetAddress(),
+    location: faker.address.streetAddress() + " " + faker.address.city() + " " + faker.address.state() + " " + faker.address.zipcode(),
     startDate: '2019-07-10 00:00:00',
     startTime: '2019-07-10 10:00:00',
     endDate: '2019-07-12 12:00:00',

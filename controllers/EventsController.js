@@ -46,9 +46,9 @@ const getAll = async (req, res) => {
   let err, event;
 
   let whereStatement = {};
-  if (req.query.name) {
-    whereStatement.name = {
-      $like: '%' + req.query.name + '%'
+  if (req.query.location) {
+    whereStatement.location = {
+      $like: '%' + req.query.location + '%'
     };
   }
 
@@ -63,7 +63,7 @@ module.exports.getAll = getAll;
 const get = async (req, res) => {
   let err, event;
   let eventId = parseInt(req.params.currentEventId);
-
+console.log(raymond,req.params)
   res.setHeader('Content-Type', 'application/json');
   [err, event] = await to(Events.findByPk(eventId));
   if (!event) {

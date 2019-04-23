@@ -11,7 +11,17 @@ export class EventService {
 
   constructor(private http: HttpClient) {}
     
-  getAll(): Observable<IEvent[]> {
-    return this.http.get<IEvent[]>('http://localhost:3000/getAll');
+  getAll(text: string): Observable<IEvent[]> {
+    return this.http.get<IEvent[]>('http://localhost:3000/events-list/');
+  }
+
+  get(text:string): Observable<IEvent[]> {
+    console.log('Richard',text);
+    return this.http.get<IEvent[]>(`http://localhost:3000/events-list?location=${text}`);
+  }
+
+  getById(id: number): Observable<IEvent> {
+    console.log('event id ->' + id)
+    return this.http.get<IEvent>(`http://localhost:3000/event-detail/${id}`);
   }
 }

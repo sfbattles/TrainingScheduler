@@ -15,20 +15,22 @@ import { LoginComponent } from './common/auth/login.component';
 import { TokenInterceptor } from './common/auth/token.interceptor';
 import { SignUpComponent } from './signup/signup.component';
 import { ToastrModule } from 'ngx-toastr';
-import { EventListComponent } from './event-list/event-list.component';
+import { EventDetailComponent } from './event/event-detail.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { EventsListComponent } from './event/events-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    EventListComponent,
+    EventDetailComponent,
     UserListComponent,
     SignUpComponent,
     UserListComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    EventsListComponent
   ],
   imports: [
     BrowserModule,

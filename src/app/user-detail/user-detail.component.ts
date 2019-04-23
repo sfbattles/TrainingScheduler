@@ -35,7 +35,10 @@ export class UserDetailComponent implements OnInit {
   currentUser : IUser;
 
   ngOnInit() {
+
     const id = this.activeRoute.snapshot.paramMap.get('userId');
+    console.log('richard',id)
+    console.log(this.activeRoute.snapshot.paramMap)
     this.getUserDetails(+id);
   }
 
@@ -47,8 +50,7 @@ export class UserDetailComponent implements OnInit {
         this.userDetailForm.patchValue(user);         
       },
       (error) => {
-        console.log('failed getting User by Id');
-        
+        console.log('failed getting User by Id')        
       },
     );  
   }

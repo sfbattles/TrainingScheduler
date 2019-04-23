@@ -1,0 +1,69 @@
+<h2> Event Information</h2>
+
+<form [formGroup]="eventDetailForm">
+  <div class="row">
+    <div class="col-md-8">
+      <label>Name:</label> <input type="text" class="form-control" formControlName="name" placeholder="Enter Name"> <br>
+      <label>Location:</label> <input type="text" class="form-control" formControlName="location"
+        placeholder="Enter Location"> <br>
+      <div class="form-inline">
+        <label>Starting Date:</label> <br>
+        <div class="col-md-4">
+          <div class="input-group">
+            <input class="form-control" formControlName="startDate" placeholder="" name="startDate" ngbDatepicker
+              #startDate="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="startDate.toggle()" type="button"></button>
+            </div>
+          </div>
+        </div>
+        <label>Ending Date:</label>
+        <div class="col-md-4">
+          <div class="input-group">
+            <input class="form-control" formControlName="endDate" placeholder="" name="endDate" ngbDatepicker
+              #endDate="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="endDate.toggle()" type="button"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <br>
+      <div class="container-fluid" >
+        <div class="row text-left align-items-center">
+          <div class="col-md-2">
+            <label for="startTime">Start Time:</label>
+          </div>
+          <div class="col-md-4">
+            <ngb-timepicker formControlName="startTime" meridian="true"></ngb-timepicker>
+          </div>
+        </div>
+      </div>
+   
+    <br>
+    <div class="form-inline">
+
+    </div>
+
+    <div class="container-fluid">
+      <div class="row text-left align-items-center">
+        <div class="col-md-2">
+          <label for="endTime">End Time:</label>
+        </div>
+        <div class="col-md-6">
+          <ngb-timepicker formControlName="endTime" meridian="true"></ngb-timepicker>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" class="col-md-6">
+      <label for="description">Enter Description of Event</label>
+      <textarea class="form-control" formControlName="description" id="description" rows="3"
+        placeholder="Enter Description"></textarea>
+    </div>
+  </div>
+  <br>
+  <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
+</form>

@@ -87,11 +87,11 @@ app.post('/events',
           passport.authenticate('jwt', { session: false }),
           eventsController.create);
 
-app.get('/events', 
+app.get('/events-list', 
         passport.authenticate('jwt', { session: false }),
         eventsController.getAll);
 
-app.get('/events/:currentEventId', 
+app.get('/event-detail/:currentEventId', 
         passport.authenticate('jwt', { session: false }),
         eventsController.get);
 

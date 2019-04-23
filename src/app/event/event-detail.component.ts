@@ -3,16 +3,17 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { EventService } from '../services/event.service';
 import { IEvent } from "../IEvent";
-import {NgbDateStruct, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
+import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 
 
 @Component({
-  selector: 'app-event-list',
-  templateUrl: './event-list.component.html',
-  styleUrls: ['./event-list.component.css']
+  selector: 'app-event-detail',
+  templateUrl: './event-detail.component.html',
+  styleUrls: ['./event-detail.component.css']
 })
 
-export class EventListComponent implements OnInit {
+export class EventDetailComponent implements OnInit {
 
   model: NgbDateStruct;
   date: {year: number, month: number};
@@ -21,9 +22,10 @@ export class EventListComponent implements OnInit {
 
   constructor(private toastr: ToastrService,
     private eventService: EventService,
-    private calendar: NgbCalendar) {}
+    private calendar: NgbCalendar,
+    private activeRoute: ActivatedRoute) {}
   
-  eventForm = new FormGroup({
+  eventDetailForm = new FormGroup({
     name : new FormControl('',Validators.required),
     location : new FormControl('',Validators.required),
     startDate : new FormControl(''),
@@ -37,28 +39,34 @@ export class EventListComponent implements OnInit {
     this.meridian = !this.meridian;
 }
 
-  selectToday() {
-    this.model = this.calendar.getToday();
-  }
-
-  eventList: IEvent[];
+  event: IEvent;
 
   ngOnInit() {
+ 
+    const id = this.activeRoute.snapshot.paramMap.get('eventId');
+    this.getEventDetails(+id);
   }
 
   showError(errorMessage) {
     this.toastr.error(errorMessage);
   }
   save(): void {
-    if (this.eventForm.controls.name.invalid) {
+    if (this.eventDetailForm.controls.name.invalid) {
       this.showError('Name Is Invalid')
     }
-    console.log(this.eventForm.controls.name.invalid);
+    console.log(this.eventDetailForm.controls.name.invalid);
   }
-  getAllEvents() {
-    this.eventService.getAll().subscribe((eventList) => {
-      this.eventList = eventList;
-      console.log(eventList);
-    });
+
+  getEventDetails(id: number) : void {
+    console.log("great",id)
+    this.eventService.getById(id).subscribe((event) => {
+      this.event = event;
+      console.log(event);
+      this.eventDetailForm.patchValue(event);   
+    },
+    (error) => {
+      console.log('failed getting User by Id');      
+    },
+    );
   }
 }
