@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "RLong",
-    "password": "LA994106*rd",
-    "database": "Training_Scheduler_RLong",
-    "host": "172.31.252.135",
+    "username": "root",
+    "password": "12345678",
+    "database": "trainingscheduler",
+    "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
